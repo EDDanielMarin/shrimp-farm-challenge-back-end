@@ -7,6 +7,8 @@ This is the Farm Challenge back end part, made with NodeJS and MongoDB
 ## Installation
 Fist you need install [NodeJS](https://nodejs.org/en/download/) in your pc
 
+Optionally you can install  [MongoDB](https://docs.mongodb.com/manual/installation/) or use  [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register)
+
 Use the package manager [npm](https://www.npmjs.com/) to install dependencies.
 
 ```bash
