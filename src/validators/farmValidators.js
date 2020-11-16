@@ -7,7 +7,6 @@ const poundSchema = Joi.object().keys({
     name: Joi.string().min(5).required(),
     size: Joi.number().required(),
     depth: Joi.number().required(),
-    temperature: Joi.number().required(),
     active: Joi.boolean().required(),
     farm: Joi.objectId().required()
 

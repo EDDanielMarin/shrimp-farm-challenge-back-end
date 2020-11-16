@@ -23,7 +23,7 @@ module.exports.doLogin = async (req, res, next) => {
             token
         })
     } else {
-        return next(createError(401, 'Please enter valid credentials'))
+        return next(createError(405, 'Please enter valid credentials'))
     }
 
 };

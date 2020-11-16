@@ -15,7 +15,7 @@ const save = async (req, res, next) => {
     }
     return  res.json({
         data,
-        message: 'FarmController successful saved'
+        message: 'Farm successful saved'
     });
 };
 const update = async (req, res, next) => {
@@ -38,7 +38,7 @@ const update = async (req, res, next) => {
     }
     return  res.json({
         data,
-        message: 'FarmController successful updated'
+        message: 'Farm successful updated'
     });
 };
 const get = async (req, res, next) => {
@@ -69,14 +69,27 @@ const remove = async (req, res, next) => {
         return  next(createError(404))
     }
     await FarmController.deleteOne({_id : id});
-    return  res.json({message: "FarmController successful deleted"});
+    return  res.json({message: "Farm successful deleted"});
+};
+const getSize = async (req, res, next) => {
+    const id = req.params.id;
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return next(createError(400, 'Invalid id'))
+    }
+    const data = await FarmController.findById(id).populate('pounds');
+    const size = data.pounds ? data.pounds.map(x => x.size).reduce((a, b) => a + b, 0) : 0;
+    if(!data) {
+        return  next(createError(404))
+    }
+    return  res.json({message: "Success",data: {size} });
 };
 module.exports = {
     save,
     find,
     get,
     update,
-    remove
+    remove,
+    getSize
 };
 
 
